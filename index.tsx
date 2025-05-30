@@ -1,39 +1,35 @@
-import { Text, View, StyleSheet } from "react-native";
-import { Image } from "expo-image"
-import { Ionicons } from "@expo/vector-icons"
+import { Ionicons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import { StyleSheet, Text, View } from "react-native";
 
-// npm install expo-image (usar este código no terminal)
-
-const foto = require("../assets/images/images.jpeg")
+const foto = require("../../assets/images/react-logo.png");
 
 export default function Index() {
   return (
-    <View style={styles.container} >
-      <View style = {styles.containerImg}>
-        <Image source = {foto} style={styles.estiloFoto}></Image>
+    <View style={styles.container}>
+      <View style={styles.containerImg}>
+        <Image source={foto} style={styles.estiloFoto} />
       </View>
-      <View style = {styles.containerConteudo}>
-        <View style = {styles.containerNome}>
-          <Text style={styles.nome}>GUILHERME RODRIGUES</Text>
+      <View style={styles.containerConteudo}>
+        <View style={styles.containerNome}>
+          <Text style={styles.nome}>Guilherm Rodrigues</Text>
         </View>
-        <Text style = {styles.linha}>
-          _______________________________________
-        </Text>
-        <View style = {styles.containerDados}>
-          <Ionicons name="person" size={24} color="red" />
-          <Text style = {styles.textoDados}>16 anos</Text>
+        <Text style={styles.linha}>_______________________________________</Text>
+        <View style={styles.containerDados}>
+          <Ionicons name="person-circle" size={28} color="#4db6ac" />
+          <Text style={styles.textoDados}>16 anos</Text>
         </View>
-        <View style = {styles.containerDados}>
-          <Ionicons name="mail" size={24} color="red" />
-          <Text style = {styles.textoDados}>guilherme.rodrigues24@escola.pr.gov.br</Text>
+        <View style={styles.containerDados}>
+          <Ionicons name="mail-outline" size={28} color="#4db6ac" />
+          <Text style={styles.textoDados}>guilherm.rodrigues@email.com</Text>
         </View>
-        <View style = {styles.containerDados}>
-          <Ionicons name="call" size={24} color="red" />
-          <Text style = {styles.textoDados}>(42) 99960-4275</Text>
+        <View style={styles.containerDados}>
+          <Ionicons name="call-outline" size={28} color="#4db6ac" />
+          <Text style={styles.textoDados}>(42) 98888-7777</Text>
         </View>
-        <View style = {styles.containerDados}>
-          <Ionicons name="home" size={24} color="red" />
-          <Text style = {styles.textoDados}>Ponta Grossa / PR</Text>
+        <View style={styles.containerDados}>
+          <Ionicons name="location-outline" size={28} color="#4db6ac" />
+          <Text style={styles.textoDados}>Ponta Grossa / PR</Text>
         </View>
       </View>
     </View>
@@ -43,42 +39,49 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#102027", // azul escuro
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "grey"
+    padding: 20,
   },
   containerImg: {
     flex: 1,
     paddingTop: 60,
   },
   estiloFoto: {
-    width: 300,
-    height: 300,
+    width: 280,
+    height: 280,
+    borderRadius: 140, // Deixa a imagem redonda
+    borderWidth: 3,
+    borderColor: "#4db6ac",
   },
   containerConteudo: {
-    flex: 1
+    flex: 1,
+    width: "100%",
+    marginTop: 20,
   },
-  containerNome:{
-    alignItems:"center",
+  containerNome: {
+    alignItems: "center",
   },
   nome: {
-    fontSize: 40,
-    color: "white",
+    fontSize: 36,
+    color: "#4db6ac",
     fontWeight: "bold",
   },
-  linha:{
-    color: "white",
-    fontSize: 20,
-    marginBottom: 20
+  linha: {
+    color: "#4db6ac",
+    fontSize: 22,
+    marginBottom: 20,
+    textAlign: "center",
   },
   containerDados: {
-    marginBottom: 8,
+    marginBottom: 14,
     flexDirection: "row",
     alignItems: "center",
   },
   textoDados: {
-    marginLeft: 10,
-    color: "white",
-    fontSize: 24,
-  }
-})
+    marginLeft: 12,
+    color: "#b2dfdb",
+    fontSize: 22,
+  },
+});
