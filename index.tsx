@@ -1,87 +1,75 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { Image } from 'expo-image';
+import { Platform, StyleSheet } from 'react-native';
 
-const foto = require("../../assets/images/react-logo.png");
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
-export default function Index() {
+export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.containerImg}>
-        <Image source={foto} style={styles.estiloFoto} />
-      </View>
-      <View style={styles.containerConteudo}>
-        <View style={styles.containerNome}>
-          <Text style={styles.nome}>Guilherm Rodrigues</Text>
-        </View>
-        <Text style={styles.linha}>_______________________________________</Text>
-        <View style={styles.containerDados}>
-          <Ionicons name="person-circle" size={28} color="#4db6ac" />
-          <Text style={styles.textoDados}>16 anos</Text>
-        </View>
-        <View style={styles.containerDados}>
-          <Ionicons name="mail-outline" size={28} color="#4db6ac" />
-          <Text style={styles.textoDados}>guilherm.rodrigues@email.com</Text>
-        </View>
-        <View style={styles.containerDados}>
-          <Ionicons name="call-outline" size={28} color="#4db6ac" />
-          <Text style={styles.textoDados}>(42) 98888-7777</Text>
-        </View>
-        <View style={styles.containerDados}>
-          <Ionicons name="location-outline" size={28} color="#4db6ac" />
-          <Text style={styles.textoDados}>Ponta Grossa / PR</Text>
-        </View>
-      </View>
-    </View>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/partial-react-logo.png')}
+          style={styles.reactLogo}
+        />
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText>
+          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          Press{' '}
+          <ThemedText type="defaultSemiBold">
+            {Platform.select({
+              ios: 'cmd + d',
+              android: 'cmd + m',
+              web: 'F12',
+            })}
+          </ThemedText>{' '}
+          to open developer tools.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText>
+          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText>
+          {`When you're ready, run `}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
+          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        </ThemedText>
+      </ThemedView>
+    </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#102027", // azul escuro
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
-  containerImg: {
-    flex: 1,
-    paddingTop: 60,
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
   },
-  estiloFoto: {
-    width: 280,
-    height: 280,
-    borderRadius: 140, // Deixa a imagem redonda
-    borderWidth: 3,
-    borderColor: "#4db6ac",
-  },
-  containerConteudo: {
-    flex: 1,
-    width: "100%",
-    marginTop: 20,
-  },
-  containerNome: {
-    alignItems: "center",
-  },
-  nome: {
-    fontSize: 36,
-    color: "#4db6ac",
-    fontWeight: "bold",
-  },
-  linha: {
-    color: "#4db6ac",
-    fontSize: 22,
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  containerDados: {
-    marginBottom: 14,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  textoDados: {
-    marginLeft: 12,
-    color: "#b2dfdb",
-    fontSize: 22,
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
   },
 });
